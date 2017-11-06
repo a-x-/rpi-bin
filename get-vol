@@ -1,0 +1,7 @@
+#!/bin/bash
+# hifiberry dac+
+#PATH=/home/pi/bin/:/bin:/usr/bin:/usr/local/bin:$PATH
+echo $PATH >&2
+amixer get Digital | grep -oE '\[[0-9]+%\]' | sed -r 's/(\[|\]|%)//g' | head -n1 2>/dev/null
+
+# rpi native sound: amixer | ...

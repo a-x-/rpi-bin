@@ -1,0 +1,12 @@
+#!/bin/bash
+# @reboot
+# shairport -a RPi2-main& # apple airplay
+
+HOME=/home/pi
+PATH=$HOME/n/bin:$PATH 
+
+forever start $HOME/services/light-server/index.js& # remote light
+
+forever start $HOME/services/HAP-NodeJS/BridgedCore.js& # apple light server
+
+BOT_TOKEN=$(cat $HOME/.config/tg-bot.json | jq -r .BOT_TOKEN) forever start /home/pi/services/tg-bot/index.js

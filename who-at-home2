@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+const util = require('util');
+const child_process = require('child_process');
+const exec = util.promisify(child_process.exec.bind(child_process));
+
+const conf = require('/home/pi/.config/who-at-home2'); // Object of mate -> dev[]
+
+const map = (devices) => {
+	const res = {};
+	devices.forEach((dev) => (res[dev[2].toLowerCase()] = dev[3] && (dev[3] === 'Y')));
+	return res;
+};
+
+exec("curl --basic --user 'admin:lun#Din0' http://192.168.1.254/index.htm 2>/dev/null | grep 'var device_array'")
+.then((stdout) => eval('var device = Array;' + stdout + ';device_array'))
+.then((res) => map(res))
+.then((dhcpDevs) => {
+	const res = {};
+	const mates = Object.keys(conf).forEach((mate) => {
+		const devs = conf[mate];
+		res[mate] = devs.reduce((res, dev) => dhcpDevs[dev] || res, false);
+	});
+	return res;
+})
+//.then((res) => ({
+//	lenya: res['macbookpro-3797'] || res['redmi4-redmi'] || false,
+//	misha: res['redmi3-redmi'] || res['asus-mikhail'] || false,
+//	sasha: res['macbookpro-2d92'] || res['inv-phone'] || false,
+//}))
+.then((json) => console.log(JSON.stringify(json, null, 4)))
+.catch(e => console.error(e));

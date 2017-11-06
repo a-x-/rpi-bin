@@ -1,0 +1,6 @@
+#!/bin/bash
+pids="$(cat /tmp/paused-play.pids 2>/dev/null)"
+[[ "$pids" ]] && (echo "$pids" | while read pid; do kill -CONT $pid; done; rm /tmp/paused-play.pids 2>/dev/null; exit)
+
+pid=$(ps aux | grep mplayer | grep -v grep | head -n1 | cut -c10-15)
+[[ "$pid" ]] && kill -CONT $pid

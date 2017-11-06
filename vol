@@ -1,0 +1,63 @@
+#!/bin/bash
+
+vol=$1
+intent=$2
+cur=$(get-vol)
+
+# hifiberry dac+
+function hifi() {
+	vol=$1
+	amixer set Digital ${vol}% >/dev/null 2>&1
+}
+
+# native sound card
+function rpi() {
+	vol=$1
+	amixer cset numid=1 -- ${vol}% >/dev/null 2>&1
+}
+
+function check_limits() {
+	vol=$1
+	([[ ! "$vol" ]] || [[ "$vol" -le "60" ]] || [[ "$vol" -ge "100" ]]) || echo ok
+}
+
+# @usage: vol up
+if [[ "$vol" == "up" ]]; then
+	if [[ ! "$(check_limits $(get-vol))" ]]; then
+		echo too high >&2
+		exit 1
+	fi
+	hifi 5%+
+	get-vol
+	exit
+fi
+if [[ "$vol" == "down" ]]; then
+	if [[ ! "$(check_limits $(get-vol))" ]]; then
+		echo too low >&2
+		exit 1
+	fi
+	hifi 5%-
+	get-vol
+	exit
+fi
+
+# @usage: vol get
+if [[ "$1" == "get" ]]; then
+	get-vol
+	exit
+fi
+
+# @usage: vol 60 quieter # set to 60% if it will make quieter
+if \
+	[[ ! "$vol" ]] || [[ "$vol" -lt "60" ]] || [[ "$vol" -gt "100" ]] \
+	|| ([[ "$intent" == "louder" ]] && [[ "$cur" -gt "$vol" ]]) \
+	|| ([[ "$intent" == "quieter" ]] && [[ "$cur" -lt "$vol" ]])
+then
+	echo vol unchanged: cur: $cur, new: $vol, intent: $intent, limits: 60—100 >&2
+	[[ ! "$vol" ]] && echo empty >&2
+	[[ "$vol" -lt "60" ]] && echo less then 60 >&2
+	[[ "$vol" -gt "100" ]] && echo greather then 100 >&2
+	exit 1
+fi
+
+hifi $vol
