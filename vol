@@ -53,7 +53,7 @@ if \
 	|| ([[ "$intent" == "louder" ]] && [[ "$cur" -gt "$vol" ]]) \
 	|| ([[ "$intent" == "quieter" ]] && [[ "$cur" -lt "$vol" ]])
 then
-	echo vol unchanged: cur: $cur, new: $vol, intent: $intent, limits: 60—100 >&2
+	echo vol_limit. vol unchanged: cur: $cur, new: $vol, intent: $intent, limits: 60—100 >&2
 	[[ ! "$vol" ]] && echo empty >&2
 	[[ "$vol" -lt "60" ]] && echo less then 60 >&2
 	[[ "$vol" -gt "100" ]] && echo greather then 100 >&2
