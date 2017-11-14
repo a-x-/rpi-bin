@@ -1,0 +1,18 @@
+#!/bin/bash
+# vol2 100
+
+vol=$1
+
+# hifiberry dac+
+function hifi() {
+	vol=$1
+	amixer set Digital ${vol}% >/dev/null 2>&1
+}
+
+# native sound card
+function rpi() {
+	vol=$1
+	amixer cset numid=1 -- ${vol}% >/dev/null 2>&1
+}
+
+hifi $vol

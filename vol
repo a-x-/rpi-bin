@@ -1,4 +1,5 @@
 #!/bin/bash
+# deprecated
 
 vol=$1
 intent=$2
