@@ -1,5 +1,5 @@
 #!/bin/bash
-# vol2 100
+# simple-vol 100
 
 vol=$1
 
