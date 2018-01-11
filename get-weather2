@@ -11,7 +11,7 @@ fetch(`https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.f
 	//description: cond.weather[0].description,
 	//icon: iconMap['wi-owm-day-' + cond.weather[0].id], //cond.weather[0].icon,
 	temp: cond.temp,
-	description: cond.description,
+	description: cond.text,
 }))
 .then(json => console.log(JSON.stringify(json)))
 .catch(e => {console.error(e);process.exit(1); });
