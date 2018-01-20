@@ -5,9 +5,11 @@ const humans = require('/home/pi/.config/who-at-home3.json')
 const lanHost = require('./lan-host-resolve.js');
 
 const humansIpAddrs = Object.entries(humans).map(([name, hostnames]) => {
-  const ipAddrs = hostnames.map((hostname) => {
-    return lanHost.resolve(hostname, lanHost.ATTRS.IP);
-  });
+  const ipAddrs = hostnames
+    .map((hostname) => {
+      return lanHost.resolve(hostname, lanHost.ATTRS.IP);
+    })
+    .filter(ip => ip);
   return { name, ipAddrs };
 })
 
