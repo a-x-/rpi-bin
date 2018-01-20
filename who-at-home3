@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+// ping based
+
+const humans = require('/home/pi/.config/who-at-home3.json')
+const lanHost = require('./lan-host-resolve.js');
+
+Object.entries(humans).map(([human, hostnames]) => {
+  const ipAddrs = hostnames.map((hostname) => {
+    return lanHost.resolve(hostname, lanHost.ATTRS.IP);
+  });
+})

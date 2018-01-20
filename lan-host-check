@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+ip_arg=$1
+
+ping -q -c1 -W1 $ip_arg >/dev/null && echo here || echo outside
