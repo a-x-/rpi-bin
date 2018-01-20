@@ -19,6 +19,10 @@ function resolve(arg, target = ATTRS.IP) {
   const arg_ = arg.trim().toLowerCase();
   const argType = detectArgType(arg_);
   const device =  registry.find(record => record[argType].toLowerCase() === arg_)
+	if (!device) {
+		console.error(`did not resolved: ${ argType } ${ arg_ }`)
+		return null;
+	}
   return device[target];
 }
 
