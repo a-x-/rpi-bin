@@ -25,13 +25,11 @@ const humansIpAddrs = Object.entries(humans).map(([name, hostnames]) => {
 
 const humansAtHome = {}
 
-const chickIpFunctions = humansIpAddrs.reduce((funs, human) => {
-  return [...funs, ...human.ipAddrs.map(ip => {
-    return async () => {
-      humansAtHome[name] = humansAtHome[name] || await exec(`lan-host-check ${ ip }`);
-    }
+const chickIpRequests = humansIpAddrs.reduce((reqs, human) => {
+  return [...reqs, ...human.ipAddrs.map(async (ip) => {
+    humansAtHome[name] = humansAtHome[name] || await exec(`lan-host-check ${ ip }`);
   })];
 }, []);
 
-Promise.all(chickIpFunctions)
+Promise.all(chickIpRequests)
   .then(console.log(JSON.stringify(humansAtHome, null, 4)))
