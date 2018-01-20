@@ -28,9 +28,11 @@ const humansAtHome = {}
 const chickIpRequests = humansIpAddrs.reduce((reqs, { ipAddrs, name }) => {
   return [...reqs, ...ipAddrs.map(async (ip) => {
     if (humansAtHome[name]) return;
-    humansAtHome[name] = await exec(`lan-host-check ${ ip }`);
+    console.error('>>>', name, ip) // debug
+    humansAtHome[name] = (await exec(`lan-host-check ${ ip }`)).trim() === 'here';
+    console.error('<<<', name, ip, '---', humansAtHome[name])
   })];
 }, []);
 
 Promise.all(chickIpRequests)
-  .then(console.log(JSON.stringify(humansAtHome, null, 4)))
+  .then(() => console.log(JSON.stringify(humansAtHome, null, 4)))
