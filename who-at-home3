@@ -4,8 +4,22 @@
 const humans = require('/home/pi/.config/who-at-home3.json')
 const lanHost = require('./lan-host-resolve.js');
 
-Object.entries(humans).map(([human, hostnames]) => {
+const humansIpAddrs = Object.entries(humans).map(([name, hostnames]) => {
   const ipAddrs = hostnames.map((hostname) => {
     return lanHost.resolve(hostname, lanHost.ATTRS.IP);
   });
+  return { name, ipAddrs };
 })
+
+const humansAtHome = {}
+
+const chickIpFunctions = humansIpAddrs.reduce((funs, human) => {
+  return [...funs, ...human.ipAddrs.map(ip => {
+    return async () => {
+      humansAtHome[name] = humansAtHome[name] || await exec(`lan-host-check ${ ip }`);
+    }
+  })];
+}, []);
+
+Promise.all(chickIpFunctions)
+  .then(console.log(JSON.stringify(humansAtHome, null, 4)))
