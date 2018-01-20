@@ -4,6 +4,16 @@
 const humans = require('/home/pi/.config/who-at-home3.json')
 const lanHost = require('./lan-host-resolve.js');
 
+const { util, pify } = (() => {
+  const util = require('util') // eslint-disable-line
+  return { util, pify: util.promisify.bind(util) }
+})()
+
+const exec = (() => {
+  const childProcess = require('child_process')
+  return pify(childProcess.exec.bind(childProcess))
+})()
+
 const humansIpAddrs = Object.entries(humans).map(([name, hostnames]) => {
   const ipAddrs = hostnames
     .map((hostname) => {
