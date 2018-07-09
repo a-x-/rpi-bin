@@ -1,0 +1,149 @@
+{
+  "query": {
+    "count": 1,
+    "created": "2018-07-09T06:35:00Z",
+    "lang": "en-us",
+    "results": {
+      "channel": {
+        "units": {
+          "distance": "km",
+          "pressure": "mb",
+          "speed": "km/h",
+          "temperature": "C"
+        },
+        "title": "Yahoo! Weather - Moscow, Moscow Federal City, RU",
+        "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2122265/",
+        "description": "Yahoo! Weather for Moscow, Moscow Federal City, RU",
+        "language": "en-us",
+        "lastBuildDate": "Mon, 09 Jul 2018 09:35 AM MSK",
+        "ttl": "60",
+        "location": {
+          "city": "Moscow",
+          "country": "Russia",
+          "region": " Moscow Federal City"
+        },
+        "wind": {
+          "chill": "57",
+          "direction": "295",
+          "speed": "22.53"
+        },
+        "atmosphere": {
+          "humidity": "91",
+          "pressure": "33457.53",
+          "rising": "0",
+          "visibility": "25.27"
+        },
+        "astronomy": {
+          "sunrise": "3:59 am",
+          "sunset": "9:11 pm"
+        },
+        "image": {
+          "title": "Yahoo! Weather",
+          "width": "142",
+          "height": "18",
+          "link": "http://weather.yahoo.com",
+          "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+        },
+        "item": {
+          "title": "Conditions for Moscow, Moscow Federal City, RU at 08:00 AM MSK",
+          "lat": "55.741638",
+          "long": "37.605061",
+          "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2122265/",
+          "pubDate": "Mon, 09 Jul 2018 08:00 AM MSK",
+          "condition": {
+            "code": "30",
+            "date": "Mon, 09 Jul 2018 08:00 AM MSK",
+            "temp": "14",
+            "text": "Partly Cloudy"
+          },
+          "forecast": [
+            {
+              "code": "47",
+              "date": "09 Jul 2018",
+              "day": "Mon",
+              "high": "22",
+              "low": "13",
+              "text": "Scattered Thunderstorms"
+            },
+            {
+              "code": "39",
+              "date": "10 Jul 2018",
+              "day": "Tue",
+              "high": "23",
+              "low": "15",
+              "text": "Scattered Showers"
+            },
+            {
+              "code": "4",
+              "date": "11 Jul 2018",
+              "day": "Wed",
+              "high": "23",
+              "low": "16",
+              "text": "Thunderstorms"
+            },
+            {
+              "code": "30",
+              "date": "12 Jul 2018",
+              "day": "Thu",
+              "high": "24",
+              "low": "15",
+              "text": "Partly Cloudy"
+            },
+            {
+              "code": "30",
+              "date": "13 Jul 2018",
+              "day": "Fri",
+              "high": "25",
+              "low": "14",
+              "text": "Partly Cloudy"
+            },
+            {
+              "code": "28",
+              "date": "14 Jul 2018",
+              "day": "Sat",
+              "high": "25",
+              "low": "16",
+              "text": "Mostly Cloudy"
+            },
+            {
+              "code": "28",
+              "date": "15 Jul 2018",
+              "day": "Sun",
+              "high": "26",
+              "low": "17",
+              "text": "Mostly Cloudy"
+            },
+            {
+              "code": "39",
+              "date": "16 Jul 2018",
+              "day": "Mon",
+              "high": "25",
+              "low": "17",
+              "text": "Scattered Showers"
+            },
+            {
+              "code": "4",
+              "date": "17 Jul 2018",
+              "day": "Tue",
+              "high": "25",
+              "low": "16",
+              "text": "Thunderstorms"
+            },
+            {
+              "code": "30",
+              "date": "18 Jul 2018",
+              "day": "Wed",
+              "high": "26",
+              "low": "18",
+              "text": "Partly Cloudy"
+            }
+          ],
+          "description": "<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/30.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Partly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Scattered Thunderstorms. High: 22Low: 13\n<BR /> Tue - Scattered Showers. High: 23Low: 15\n<BR /> Wed - Thunderstorms. High: 23Low: 16\n<BR /> Thu - Partly Cloudy. High: 24Low: 15\n<BR /> Fri - Partly Cloudy. High: 25Low: 14\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2122265/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n<BR />\n]]>",
+          "guid": {
+            "isPermaLink": "false"
+          }
+        }
+      }
+    }
+  }
+}
