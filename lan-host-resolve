@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // Useful when no any local DNS
+// for ip by mac detection you may use: `sudo arp-scan -l` after `sudo apt-get install arp-scan`
 
 const fs = require('fs');
 const cl = console.log.bind(console);
@@ -7,7 +8,7 @@ const read = fs.readFileSync.bind(fs);
 const write = fs.writeFileSync.bind(fs);
 const { resolve } = require('./lan-host-resolve.js');
 
-const stdin = read('/dev/stdin').toString();
+//const stdin = read('/dev/stdin').toString();
 const arg = process.argv[2];
 const target = process.argv[3];
 
